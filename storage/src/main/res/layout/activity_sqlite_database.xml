@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:id="@+id/text_id_sqlite_database"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            android:paddingBottom="4dp"
+            android:text="_id:" />
+
+        <EditText
+            android:id="@+id/text_id_value_sqlite_database"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:id="@+id/text_int_sqlite_database"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            android:paddingBottom="4dp"
+            android:text="int:" />
+
+        <EditText
+            android:id="@+id/edit_text_int_sqlite_database"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:id="@+id/text_string_sqlite_database"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            android:paddingBottom="4dp"
+            android:text="string:" />
+
+        <EditText
+            android:id="@+id/edit_text_string_sqlite_database"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:id="@+id/text_long_sqlite_database"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            android:paddingBottom="4dp"
+            android:text="float:" />
+
+        <EditText
+            android:id="@+id/edit_text_float_sqlite_database"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/button_insert_sqlite_database"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="crudOperation"
+            android:text="添加" />
+
+        <Button
+            android:id="@+id/button_query_sqlite_database"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="crudOperation"
+            android:text="查询" />
+
+        <Button
+            android:id="@+id/button_update_sqlite_database"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="crudOperation"
+            android:text="修改" />
+
+        <Button
+            android:id="@+id/button_delete_sqlite_database"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="crudOperation"
+            android:text="删除" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/button_cursor_first_sqlite_database"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="cursorOperation"
+            android:text="第一条" />
+
+        <Button
+            android:id="@+id/button_cursor_previous_sqlite_database"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="cursorOperation"
+            android:text="前一条" />
+
+        <Button
+            android:id="@+id/button_cursor_next_sqlite_database"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="cursorOperation"
+            android:text="后一条" />
+
+        <Button
+            android:id="@+id/button_cursor_last_sqlite_database"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="cursorOperation"
+            android:text="最后一条" />
+    </LinearLayout>
+
+
+    <EditText
+        android:id="@+id/edit_text_execsql_sqlite_database"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/button_execsql_sqlite_database"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Execute" />
+
+
+    <ListView
+        android:background="@color/colorAccent"
+        android:id="@+id/list_view_sqlite_database"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

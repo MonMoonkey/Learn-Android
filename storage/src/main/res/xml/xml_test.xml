@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<level>
+    <begin x="80" y="415" />
+    <walls count="2">
+        <wall left="195" right="201" />
+        <wall left="400" right="406" />
+    </walls>
+    <node>Text字段</node>
+</level>
