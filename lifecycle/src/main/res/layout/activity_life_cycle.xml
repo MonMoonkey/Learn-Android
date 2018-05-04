@@ -46,7 +46,7 @@
 
     <fragment
         android:id="@+id/fragment_life_cycle_static"
-        android:name="com.monkey.learn.android.lifecycle.LifeCycleFragment"
+        android:name="priv.monkey.learn.android.lifecycle.LifeCycleFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"/>

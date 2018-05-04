@@ -6,7 +6,7 @@ android {
 
 
     defaultConfig {
-        applicationId "com.monkey.learn.android.broadcast_receiver"
+        applicationId "priv.monkey.learn.android.broadcast_receiver"
         minSdkVersion 23
         targetSdkVersion 27
         versionCode 1

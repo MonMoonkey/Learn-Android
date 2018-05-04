@@ -6,7 +6,7 @@ android {
 
 
     defaultConfig {
-        applicationId "com.monkey.learn.android.lifecycle"
+        applicationId "priv.monkey.learn.android.lifecycle"
         minSdkVersion 23
         targetSdkVersion 27
         versionCode 1

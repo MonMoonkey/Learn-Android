@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.monkey.learn.android.broadcast_receiver">
+    package="priv.monkey.learn.android.broadcast_receiver">
     <permission android:name="monkey.permission.test"
         android:protectionLevel="normal"/>
     <uses-permission android:name="monkey.permission.test"/>
