@@ -19,9 +19,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".shared_preferences.SharedPreferencesActivity"/>
-        <activity android:name=".file.FileStorageActivity"/>
-        <activity android:name=".sqlite_database.SQLiteDatabaseActivity"/>
+        <activity android:name=".shared_preferences.SharedPreferencesActivity" />
+        <activity android:name=".file.FileStorageActivity" />
+        <activity android:name=".sqlite_database.SQLiteDatabaseActivity" />
+        <provider
+            android:name=".content_provider.MonkeyContentProvider"
+            android:authorities="priv.monkey.learn.android.storage.content_provider"
+            android:enabled="true"
+            android:exported="true"/>
     </application>
 
 </manifest>

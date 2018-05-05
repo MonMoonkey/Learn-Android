@@ -79,6 +79,7 @@ public class SQLiteDatabaseActivity extends AppCompatActivity {
 //        mSQLiteDatabase.execSQL("DROP TABLE sqliteDemoTable");
         boolean table_exist=false;
         String sql= "select DISTINCT tbl_name from sqlite_master where tbl_name = 'sqliteDemoTable'";
+        //用来判断数据库里有没有某个表
         try{
             mCursor = mSQLiteDatabase.rawQuery(sql, null);
             if(mCursor!=null){
@@ -93,7 +94,32 @@ public class SQLiteDatabaseActivity extends AppCompatActivity {
         if(!table_exist) {
             mSQLiteDatabase.execSQL("CREATE TABLE sqliteDemoTable(_id INTEGER PRIMARY KEY NOT NULL,int INTEGER,string TEXT,float REAL);");
         }
-//        ContentValues contentValues = new ContentValues();
+        table_exist=false;
+        String sql2= "select DISTINCT tbl_name from sqlite_master where tbl_name = 'sqliteDemoTable_2'";
+        //用来判断数据库里有没有某个表
+        try{
+            mCursor = mSQLiteDatabase.rawQuery(sql, null);
+            if(mCursor!=null){
+                int count = mCursor.getCount();
+                if(count>0){
+                    table_exist = true;
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        if(!table_exist) {
+            mSQLiteDatabase.execSQL("CREATE TABLE sqliteDemoTable_2(_id INTEGER PRIMARY KEY NOT NULL,name TEXT,number INTEGER);");
+        }
+
+        mCursor = mSQLiteDatabase.query("sqliteDemoTable_2", new String[]{"_id"}, null, null, null, null, null);
+        if(mCursor.getCount()!=0){
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("name","Monkey");
+            contentValues.put("number",684240);
+            mSQLiteDatabase.insert("sqliteDemoTable_2", null, contentValues);
+        }
+// ContentValues contentValues = new ContentValues();
 //        contentValues.put("int", 520);
 //        contentValues.put("string", "GongYue I love you!");
 //        contentValues.put("float", 0.1314);
