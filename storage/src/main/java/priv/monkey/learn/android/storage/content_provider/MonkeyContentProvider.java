@@ -39,10 +39,12 @@ public class MonkeyContentProvider extends ContentProvider {
         return false;
     }
 
+
     @Nullable
     @Override
     public Cursor query(@NonNull Uri uri, @Nullable String[] strings, @Nullable String s, @Nullable String[] strings1, @Nullable String s1) {
-//        mCursor=mSQLiteDatabase.query()
+        String table_name = getTableName(uri);
+        mCursor = mSQLiteDatabase.query(table_name, strings, s, strings1,);
         return null;
     }
 
@@ -66,5 +68,17 @@ public class MonkeyContentProvider extends ContentProvider {
     @Override
     public int update(@NonNull Uri uri, @Nullable ContentValues contentValues, @Nullable String s, @Nullable String[] strings) {
         return 0;
+    }
+
+    private String getTableName(Uri uri) {
+        String table_name=null;
+        switch (mUriMatcher.match(uri)) {
+            case 1: table_name=TABLE_1;
+            break;
+            case 2:
+                table_name = TABLE_2;
+                break;
+        }
+        return table_name;
     }
 }
