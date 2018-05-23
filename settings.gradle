@@ -1,1 +1,1 @@
-include ':app', ':broadcast-receiver', ':lifecycle', ':storage'
+include ':app', ':broadcast-receiver', ':lifecycle', ':storage', ':viewpager'
