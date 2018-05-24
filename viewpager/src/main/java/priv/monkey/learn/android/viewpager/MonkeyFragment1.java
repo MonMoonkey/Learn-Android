@@ -9,12 +9,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link MonkeyFragment1.OnFragmentInteractionListener} interface
  * to handle interaction events.
  * Use the {@link MonkeyFragment1#newInstance} factory method to
  * create an instance of this fragment.
@@ -31,7 +31,6 @@ public class MonkeyFragment1 extends Fragment {
 
     private static final String TAG = "Fragment 1: ";
 
-    private OnFragmentInteractionListener mListener;
 
     public MonkeyFragment1() {
         // Required empty public constructor
@@ -61,37 +60,38 @@ public class MonkeyFragment1 extends Fragment {
         Log.e(TAG, "onCreate");
 
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
+//            mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                                  Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         Log.e(TAG, "onCreateView");
 
-        return inflater.inflate(R.layout.fragment_monkey_1, container, false);
+        View v= inflater.inflate(R.layout.fragment_monkey_1, container, false);
+        TextView tv = v.findViewById(R.id.text);
+        tv.setText(mParam1);
+        return  v;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+    public void setmParam1(String s) {
+        this.mParam1=s;
     }
+
+//    // TODO: Rename method, update argument and hook method into UI event
+//    public void onButtonPressed(Uri uri) {
+//        if (mListener != null) {
+//            mListener.onFragmentInteraction(uri);
+//        }
+//    }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         Log.e(TAG, "onAttach");
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
     }
 
     @Override
@@ -105,6 +105,8 @@ public class MonkeyFragment1 extends Fragment {
     public void onStart() {
         super.onStart();
         Log.e(TAG, "onStart");
+        TextView tv = getView().findViewById(R.id.text);
+        tv.setText(mParam1);
     }
 
     @Override
@@ -144,23 +146,8 @@ public class MonkeyFragment1 extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
         Log.e(TAG, "onDetach");
 
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
 }
