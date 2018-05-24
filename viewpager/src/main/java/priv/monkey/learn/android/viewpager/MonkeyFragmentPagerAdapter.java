@@ -77,4 +77,9 @@ public class MonkeyFragmentPagerAdapter extends FragmentStatePagerAdapter {
     public void destroyItem(ViewGroup container, int position, Object object) {
         super.destroyItem(container, position, object);
     }
+
+    @Override
+    public float getPageWidth(int position) {
+        return 1f;
+    }
 }

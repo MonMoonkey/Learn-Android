@@ -28,7 +28,8 @@ public class FragmentActivity extends AppCompatActivity {
 
         final MonkeyFragmentPagerAdapter fragmentPagerAdapter = new MonkeyFragmentPagerAdapter(fm, fragmentList);
         viewPager.setAdapter(fragmentPagerAdapter);
-        viewPager.setPageTransformer(true,new MonkeyViewPagerTransform());
+        viewPager.setPageMargin(30);
+//        viewPager.setPageTransformer(true,new MonkeyViewPagerTransform());
 
         Button button = findViewById(R.id.fragment_button1);
         button.setOnClickListener(new View.OnClickListener() {
