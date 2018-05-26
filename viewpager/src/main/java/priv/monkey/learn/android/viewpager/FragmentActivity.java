@@ -14,13 +14,15 @@ import java.util.List;
 
 public class FragmentActivity extends AppCompatActivity {
 
+    private String string = "1";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fragment);
         ViewPager viewPager = findViewById(R.id.fragment_viewpager);
         FragmentManager fm = getFragmentManager();
-        final List<Fragment> fragmentList = new ArrayList<>();
+        final List<MonkeyBaseFragment> fragmentList = new ArrayList<>();
         fragmentList.add(MonkeyFragment1.newInstance("111", "111"));
         fragmentList.add(MonkeyFragment2.newInstance("222", "222"));
         fragmentList.add(MonkeyFragment3.newInstance("333", "333"));
@@ -44,9 +46,22 @@ public class FragmentActivity extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmentList.add(1,MonkeyFragment4.newInstance("haha","xixi"));
+                fragmentList.add(1, MonkeyFragment4.newInstance("haha", "xixi"));
                 fragmentPagerAdapter.notifyDataSetChanged();
 
+            }
+        });
+
+        Button button3 = findViewById(R.id.fragment_button3);
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int i = Integer.parseInt(string);
+                i=i+1;
+                string = String.valueOf(i);
+                for (MonkeyBaseFragment f : fragmentList) {
+                    f.setmParam2(string);
+                }
             }
         });
 

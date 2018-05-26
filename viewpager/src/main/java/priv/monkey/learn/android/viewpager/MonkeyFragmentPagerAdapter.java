@@ -14,11 +14,13 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MonkeyFragmentPagerAdapter extends FragmentStatePagerAdapter {
+public class MonkeyFragmentPagerAdapter extends FragmentPagerAdapter {
 
-    private List<Fragment> fragmentList;
+    private List<MonkeyBaseFragment> fragmentList;
+    private int mI;
+    private static final String TAG = "FragmentPagerAdapter";
 
-    public MonkeyFragmentPagerAdapter(FragmentManager fm,List<Fragment> fl) {
+    public MonkeyFragmentPagerAdapter(FragmentManager fm,List<MonkeyBaseFragment> fl) {
         super(fm);
         this.fragmentList=fl;
         Log.e(" ", "ds");
@@ -26,16 +28,19 @@ public class MonkeyFragmentPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
+//        this.mI=position;
         return fragmentList.get(position);
     }
 
     @Override
     public int getCount() {
+        Log.w(TAG, "getCount");
         return fragmentList.size();
     }
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
+        Log.w(TAG, "instantiateItem");
         Object f = super.instantiateItem(container, position);
         String p = String.valueOf(position);
        String s = f.getClass().getSimpleName();
@@ -65,21 +70,20 @@ public class MonkeyFragmentPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getItemPosition(@NonNull Object object) {
+        Log.e(TAG+"TTT", String.valueOf(mI));
         return POSITION_NONE;
     }
 
     @Override
     public void setPrimaryItem(ViewGroup container, int position, Object object) {
-
+        super.setPrimaryItem(container,position,object);
+        mI = position;
     }
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
+        Log.w(TAG, "destroyItem");
         super.destroyItem(container, position, object);
     }
 
-    @Override
-    public float getPageWidth(int position) {
-        return 1f;
-    }
 }

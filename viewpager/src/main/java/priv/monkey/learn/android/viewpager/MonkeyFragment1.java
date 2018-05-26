@@ -19,18 +19,20 @@ import android.widget.TextView;
  * Use the {@link MonkeyFragment1#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MonkeyFragment1 extends Fragment {
+public class MonkeyFragment1 extends MonkeyBaseFragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+//    private String mParam1;
+//    private String mParam2;
 
     private static final String TAG = "Fragment 1: ";
 
+    private TextView tv;
+    private TextView tv2;
 
     public MonkeyFragment1() {
         // Required empty public constructor
@@ -72,8 +74,10 @@ public class MonkeyFragment1 extends Fragment {
         Log.e(TAG, "onCreateView");
 
         View v= inflater.inflate(R.layout.fragment_monkey_1, container, false);
-        TextView tv = v.findViewById(R.id.text);
+        tv = v.findViewById(R.id.text);
+        tv2 = v.findViewById(R.id.text2);
         tv.setText(mParam1);
+        tv2.setText(mParam2);
         return  v;
     }
 
@@ -81,7 +85,13 @@ public class MonkeyFragment1 extends Fragment {
         this.mParam1=s;
     }
 
-//    // TODO: Rename method, update argument and hook method into UI event
+    @Override
+    public void setmParam2(String mParam2) {
+        super.setmParam2(mParam2);
+        tv2.setText(mParam2);
+    }
+
+    //    // TODO: Rename method, update argument and hook method into UI event
 //    public void onButtonPressed(Uri uri) {
 //        if (mListener != null) {
 //            mListener.onFragmentInteraction(uri);
