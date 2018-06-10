@@ -7,7 +7,9 @@
       <module fileurl="file://$PROJECT_DIR$/broadcast-receiver/broadcast-receiver.iml" filepath="$PROJECT_DIR$/broadcast-receiver/broadcast-receiver.iml" />
       <module fileurl="file://$PROJECT_DIR$/lifecycle/lifecycle.iml" filepath="$PROJECT_DIR$/lifecycle/lifecycle.iml" />
       <module fileurl="file://$PROJECT_DIR$/storage/storage.iml" filepath="$PROJECT_DIR$/storage/storage.iml" />
-      <module fileurl="file://$PROJECT_DIR$/viewpager/viewpager.iml" filepath="$PROJECT_DIR$/viewpager/viewpager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ui-recycleview/ui-recycleview.iml" filepath="$PROJECT_DIR$/ui-recycleview/ui-recycleview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ui-viewpager/ui-viewpager.iml" filepath="$PROJECT_DIR$/ui-viewpager/ui-viewpager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wheel-glide/wheel-glide.iml" filepath="$PROJECT_DIR$/wheel-glide/wheel-glide.iml" />
       <module fileurl="file://$PROJECT_DIR$/wheel-rxjava/wheel-rxjava.iml" filepath="$PROJECT_DIR$/wheel-rxjava/wheel-rxjava.iml" />
       <module fileurl="file://$PROJECT_DIR$/wheel-timber/wheel-timber.iml" filepath="$PROJECT_DIR$/wheel-timber/wheel-timber.iml" />
     </modules>
