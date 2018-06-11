@@ -1,1 +1,1 @@
-include ':app', ':broadcast-receiver', ':lifecycle', ':storage', ':viewpager', ':wheel-rxjava'
+include ':app', ':broadcast-receiver', ':lifecycle', ':storage', ':ui-viewpager', ':wheel-timber', ':wheel-rxjava', ':wheel-glide', ':ui-recycleview'
