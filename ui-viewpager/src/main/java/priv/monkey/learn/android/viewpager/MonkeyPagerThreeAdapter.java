@@ -11,21 +11,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class MonkeyPagerAdapter extends PagerAdapter {
+public class MonkeyPagerThreeAdapter extends PagerAdapter {
     private Context context;
     private List<TextView> textViews;
     private ViewPager viewPager;
     private int currentPosition;
+    private ViewGroup viewGroup;
 
-    public MonkeyPagerAdapter(Context c, final ViewPager viewPager) {
+    public MonkeyPagerThreeAdapter(Context c, final ViewPager viewPager) {
         this.context = c;
         this.viewPager = viewPager;
-        textViews = new ArrayList<>(5);
+        textViews = new ArrayList<>(3);
 
         for (int i = 1; i < 4; i++) {
             TextView tv = new TextView(context);
@@ -41,31 +40,31 @@ public class MonkeyPagerAdapter extends PagerAdapter {
 //        textViews[0] = textViews[2];
 //        textViews[4] = textViews[2];
 
-        {
-            TextView tv = new TextView(context);
-
-            tv.setGravity(Gravity.CENTER);
-            tv.setHeight(50);
-            tv.setWidth(100);
-            tv.setTextSize(20);
-            tv.setTextColor(Color.BLACK);
-
-            tv.setText("Pager " + 3 + " 号");
-            textViews.add(0, tv);
-        }
-
-        {
-            TextView tv = new TextView(context);
-
-            tv.setGravity(Gravity.CENTER);
-            tv.setHeight(50);
-            tv.setWidth(100);
-            tv.setTextSize(20);
-            tv.setTextColor(Color.BLACK);
-
-            tv.setText("Pager " + 1 + " 号");
-            textViews.add(tv);
-        }
+//        {
+//            TextView tv = new TextView(context);
+//
+//            tv.setGravity(Gravity.CENTER);
+//            tv.setHeight(50);
+//            tv.setWidth(100);
+//            tv.setTextSize(20);
+//            tv.setTextColor(Color.BLACK);
+//
+//            tv.setText("Pager " + 3 + " 号");
+//            textViews.add(0, tv);
+//        }
+//
+//        {
+//            TextView tv = new TextView(context);
+//
+//            tv.setGravity(Gravity.CENTER);
+//            tv.setHeight(50);
+//            tv.setWidth(100);
+//            tv.setTextSize(20);
+//            tv.setTextColor(Color.BLACK);
+//
+//            tv.setText("Pager " + 1 + " 号");
+//            textViews.add(tv);
+//        }
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -83,6 +82,10 @@ public class MonkeyPagerAdapter extends PagerAdapter {
             public void onPageScrollStateChanged(int state) {
 //        若viewpager滑动未停止，直接返回
                 if (state != ViewPager.SCROLL_STATE_IDLE) return;
+                if (currentPosition == 2) {
+                    viewGroup.removeViewAt(1);
+                    viewGroup.addView(getIdexTextView(4),1);
+                }
 //        若当前为第一张，设置页面为倒数第二张
 //                if (currentPosition == 0) {
 //                    viewPager.setCurrentItem(textViews.size()-2,false);
@@ -98,18 +101,24 @@ public class MonkeyPagerAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return 5;
+        return 3;
     }
 
     @Override
     public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
+        Log.e("isViewFromObject", "" + String.valueOf(view == object));
         return view == object;
+//        return ;
     }
 
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
-
+        if (position == 0) {
+            viewGroup = container;
+        }else{
+            Log.e("XIXIPI", String.valueOf(viewGroup.equals(container)));
+        }
 
 //        TextView tv = new TextView(context);
 //        tv.setGravity(Gravity.CENTER);
@@ -138,5 +147,17 @@ public class MonkeyPagerAdapter extends PagerAdapter {
 
     public void switchToMiddle(int position) {
         viewPager.setCurrentItem(1,false);
+    }
+
+    private TextView getIdexTextView(int i) {
+        TextView tv = new TextView(context);
+        tv.setGravity(Gravity.CENTER);
+        tv.setHeight(50);
+        tv.setWidth(100);
+        tv.setTextSize(20);
+        tv.setTextColor(Color.BLACK);
+
+        tv.setText("Pager " + i + " 号");
+        return tv;
     }
 }
