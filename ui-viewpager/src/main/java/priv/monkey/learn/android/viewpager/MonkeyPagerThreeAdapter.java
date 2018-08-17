@@ -20,6 +20,7 @@ public class MonkeyPagerThreeAdapter extends PagerAdapter {
     private ViewPager viewPager;
     private int currentPosition;
     private ViewGroup viewGroup;
+    private int p = 4;
 
     public MonkeyPagerThreeAdapter(Context c, final ViewPager viewPager) {
         this.context = c;
@@ -33,7 +34,7 @@ public class MonkeyPagerThreeAdapter extends PagerAdapter {
             tv.setWidth(100);
             tv.setTextSize(20);
             tv.setTextColor(Color.BLACK);
-
+            tv.setTag(i-1);
             tv.setText("Pager " + i + " 号");
             textViews.add(i-1, tv);
         }
@@ -75,16 +76,37 @@ public class MonkeyPagerThreeAdapter extends PagerAdapter {
 
             @Override
             public void onPageSelected(int position) {
+                Log.e("onPageSelected", "" + position);
                 currentPosition = position;
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
 //        若viewpager滑动未停止，直接返回
-                if (state != ViewPager.SCROLL_STATE_IDLE) return;
+                if (state != ViewPager.SCROLL_STATE_IDLE) {return;}
                 if (currentPosition == 2) {
-                    viewGroup.removeViewAt(1);
-                    viewGroup.addView(getIdexTextView(4),1);
+//                    viewGroup.removeViewAt(1);
+//                    TextView textView = getIdexTextView(4);
+//                    textViews.remove(1);
+//                    textViews.add(1,textView);
+//                    notifyDataSetChanged();
+//                    viewGroup.addView(textView,1);
+
+
+                    viewGroup.removeAllViews();
+                    textViews.remove(0);
+                    TextView textView = getIdexTextView(p,2);
+                    p=p+1;
+                    textViews.add(textView);
+//                    for (int i = 0;i<3;i++) {
+//                        textViews.get(i).setTag(1);
+//                    }
+                    notifyDataSetChanged();
+                    viewPager.setCurrentItem(1,false);
+
+
+                } else if (currentPosition == 0) {
+
                 }
 //        若当前为第一张，设置页面为倒数第二张
 //                if (currentPosition == 0) {
@@ -106,9 +128,16 @@ public class MonkeyPagerThreeAdapter extends PagerAdapter {
 
     @Override
     public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
-        Log.e("isViewFromObject", "" + String.valueOf(view == object));
+        Log.e("isViewFromObject", String.valueOf(((TextView)view).getText())+"        "+ String.valueOf(view.getTag()) + "              " + String.valueOf(object)+"         "+object.equals(view.getTag()));
+
+
+//        return object.equals(view.getTag());
         return view == object;
-//        return ;
+    }
+
+    @Override
+    public int getItemPosition(@NonNull Object object) {
+        return POSITION_NONE;
     }
 
     @NonNull
@@ -137,26 +166,27 @@ public class MonkeyPagerThreeAdapter extends PagerAdapter {
         container.addView(textViews.get(position));
 
         // 返回填充的View对象
+//        return textViews.get(position).getTag();
         return textViews.get(position);
     }
 
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-        container.removeView((View) object);
+        container.removeView(textViews.get(position));
     }
 
     public void switchToMiddle(int position) {
         viewPager.setCurrentItem(1,false);
     }
 
-    private TextView getIdexTextView(int i) {
+    private TextView getIdexTextView(int i,int j) {
         TextView tv = new TextView(context);
         tv.setGravity(Gravity.CENTER);
         tv.setHeight(50);
         tv.setWidth(100);
         tv.setTextSize(20);
         tv.setTextColor(Color.BLACK);
-
+        tv.setTag(j);
         tv.setText("Pager " + i + " 号");
         return tv;
     }
